@@ -1,0 +1,17 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1 class="text-center">Email Sender Page</h1>
+<form asp-action="SendEmail" asp-controller="Home" method="post">
+    <div class="row row-cols-1">
+        <div class="col">
+            <label class="form-label">Email to:</label>
+            <input name="email" type="text" />
+        </div>
+        <div class="col">
+            <button class="btn btn-primary rounded-pill" type="submit">Send</button>
+        </div>
+    </div>
+</form>
