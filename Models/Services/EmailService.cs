@@ -45,8 +45,8 @@ namespace MVC_Email_Azure.Models.Services
                 //var port = _mailSettings.MailPort != 0 ? _mailSettings.MailPort : int.Parse(Environment.GetEnvironmentVariable("MailPort")!);
                 //var password = _mailSettings.MailPassword ?? Environment.GetEnvironmentVariable("MailPassword");
                 var host = "smtp.gmail.com";
-                var port = 587;
-                var password = Environment.GetEnvironmentVariable("MailPassword");
+                var port = int.Parse(Environment.GetEnvironmentVariable("MailPort")!);
+                var password = "lqhnutzulyatxrgt";
 
                 await smtpClient.ConnectAsync(host, port, SecureSocketOptions.StartTls);
                 await smtpClient.AuthenticateAsync(emailSender, password);
