@@ -17,7 +17,8 @@ namespace MVC_Email_Azure.Models.Services
 
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            var emailSender = _mailSettings.Email ?? Environment.GetEnvironmentVariable("Email");
+            //var emailSender = _mailSettings.Email ?? Environment.GetEnvironmentVariable("Email");
+            var emailSender = "brianley.contactpro@gmail.com";
 
             MimeMessage newEmail = new();
 
@@ -40,9 +41,12 @@ namespace MVC_Email_Azure.Models.Services
 
             try
             {
-                var host = _mailSettings.MailHost ?? Environment.GetEnvironmentVariable("MailHost");
-                var port = _mailSettings.MailPort != 0 ? _mailSettings.MailPort : int.Parse(Environment.GetEnvironmentVariable("MailPort")!);
-                var password = _mailSettings.MailPassword ?? Environment.GetEnvironmentVariable("MailPassword");
+                //var host = _mailSettings.MailHost ?? Environment.GetEnvironmentVariable("MailHost");
+                //var port = _mailSettings.MailPort != 0 ? _mailSettings.MailPort : int.Parse(Environment.GetEnvironmentVariable("MailPort")!);
+                //var password = _mailSettings.MailPassword ?? Environment.GetEnvironmentVariable("MailPassword");
+                var host = "smtp.gmail.com";
+                var port = 587;
+                var password = "lqhnutzulyatxrgt";
 
                 await smtpClient.ConnectAsync(host, port, SecureSocketOptions.StartTls);
                 await smtpClient.AuthenticateAsync(emailSender, password);
