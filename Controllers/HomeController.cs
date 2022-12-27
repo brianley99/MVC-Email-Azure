@@ -9,11 +9,13 @@ namespace MVC_Email_Azure.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IEmailSender _emailService;
+        private readonly IConfiguration _config;
 
-        public HomeController(ILogger<HomeController> logger, IEmailSender emailService)
+        public HomeController(ILogger<HomeController> logger, IEmailSender emailService, IConfiguration config)
         {
             _logger = logger;
             _emailService = emailService;
+            _config = config;
         }
 
         public IActionResult Index()
@@ -38,6 +40,20 @@ namespace MVC_Email_Azure.Controllers
             await _emailService.SendEmailAsync(email, "testSubject", "testbody");
 
             return View("Index");
+        }
+
+        public IActionResult MySecret()
+        {
+            string mySecret = _config["MySecrets:MySecret"]!;
+
+            if (string.IsNullOrEmpty(mySecret))
+            {
+                mySecret = "Not Today!";
+            }
+
+            ViewData["MySecret"] = mySecret;
+
+            return View();
         }
 
         public IActionResult Privacy()
