@@ -4,12 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using MVC_Email_Azure.Data;
 using MVC_Email_Azure.Models;
 using MVC_Email_Azure.Models.Services;
-using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
-
-var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("MailPort"));
-builder.Configuration.AddAzureKeyVault(keyVaultEndpoint, new DefaultAzureCredential());
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
