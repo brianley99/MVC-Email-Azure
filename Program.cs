@@ -24,8 +24,6 @@ builder.Services.AddControllersWithViews();
 //App Services
 builder.Services.AddScoped<IEmailSender, EmailService>();
 
-builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
